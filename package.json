@@ -1,0 +1,140 @@
+{
+  "name": "aegiscodeai",
+  "displayName": "AegisCode AI",
+  "publisher": "EyeWindDevelopments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local deterministic TypeScript AI coding engine",
+  "license": "MIT",
+  "main": "dist/extension.js",
+  "type": "commonjs",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:aegisCodeAI.scanAndRepair",
+    "onCommand:aegisCodeAI.plan",
+    "onCommand:aegisCodeAI.startUi"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "aegisCodeAI.scanAndRepair",
+        "title": "Aegis: Scan and Repair",
+        "category": "Aegis Code AI"
+      },
+      {
+        "command": "aegisCodeAI.plan",
+        "title": "Aegis: Plan Fixes",
+        "category": "Aegis Code AI"
+      },
+      {
+        "command": "aegisCodeAI.startUi",
+        "title": "Aegis: Start UI Server",
+        "category": "Aegis Code AI"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Aegis Code AI",
+      "properties": {
+        "aegisCodeAI.port": {
+          "type": "number",
+          "default": 4000,
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Port for the local Aegis UI server."
+        },
+        "aegisCodeAI.safeMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "When enabled, plans are generated but patches are not applied."
+        },
+        "aegisCodeAI.ultraStrict": {
+          "type": "boolean",
+          "default": false,
+          "description": "Require very high confidence before applying changes."
+        },
+        "aegisCodeAI.confidenceThreshold": {
+          "type": "number",
+          "default": 0.72,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum confidence required to pass critic review."
+        },
+        "aegisCodeAI.ollama.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Ollama-backed reasoning for all agents."
+        },
+        "aegisCodeAI.ollama.baseUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Base URL for the Ollama server."
+        },
+        "aegisCodeAI.ollama.timeoutMs": {
+          "type": "number",
+          "default": 15000,
+          "minimum": 1000,
+          "description": "Timeout for Ollama requests."
+        },
+        "aegisCodeAI.ollama.models.solver": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["qwen2.5-coder:3b", "llama3.1:8b", "qwen2.5-coder:7b-instruct"],
+          "description": "Ordered list of models for the Solver agent."
+        },
+        "aegisCodeAI.ollama.models.critic": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["qwen2.5-coder:7b-instruct", "llama3.1:8b", "qwen2.5-coder:3b"],
+          "description": "Ordered list of models for the Critic agent."
+        },
+        "aegisCodeAI.ollama.models.verifier": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["qwen2.5-coder:3b", "llama3.1:8b", "qwen2.5-coder:7b-instruct"],
+          "description": "Ordered list of models for the Verifier agent."
+        }
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "node_modules",
+    "package.json",
+    "package-lock.json",
+    "LICENSE.md",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -watch -p tsconfig.json",
+    "vscode:prepublish": "npm run build",
+    "start": "node dist/index.js --ui",
+    "scan": "node dist/index.js --scan",
+    "ui": "node dist/index.js --ui",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.86.0",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^9.13.0"
+  }
+}

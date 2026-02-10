@@ -6,6 +6,10 @@
   "private": true,
   "description": "Local deterministic TypeScript AI coding engine",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dngaming128/aegiscode-ai.git"
+  },
   "main": "dist/extension.js",
   "type": "commonjs",
   "engines": {

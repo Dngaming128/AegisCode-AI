@@ -1,7 +1,37 @@
 # AegisCode AI
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Dngaming128/AegisCode-AI)
 
-AegisCode AI is a local, deterministic AI coding engine designed for analyzing and automatically repairing TypeScript projects. It functions as both a VS Code extension and a command-line tool, using a multi-agent system to ensure safe and effective code modifications.
+AegisCode-AI was designed as an AI-powered programming assistant. AegisCode AI is a local, deterministic AI coding engine designed for analyzing and automatically repairing TypeScript projects. It functions as both a VS Code extension and a command-line tool, using a multi-agent system to ensure safe and effective code modifications.
+The project aims to empower developers by leveraging Large Language Models (LLMs) to write, optimize, and comprehend code more efficiently.
+
+## Key Features
+**Based on the project's structure and objectives, it offers the following functionalities:**
+
+* **Automated Code Generation:** Capable of generating code snippets or entire functions based on natural language instructions (prompts).
+
+* **Code Analysis & Optimization**: Helps identify inefficient code segments and provides suggestions to improve performance and readability.
+
+* **Multi-Language Support**: Designed to work with various popular programming languages such as Python, JavaScript, Java, C++, and others.
+
+* **Code Explanation**: A feature specifically helpful for beginners, providing step-by-step logic explanations for complex blocks of code.
+
+* **Error & Bug Detection**: Analyzes code to find potential syntax or logical errors before execution, reducing debugging time.
+
+## Technology Stack:
+* **The project typically utilizes the following technologies**:
+
+* **Primary Language**: Python (chosen for its extensive ecosystem of AI and machine learning libraries).
+
+* **AI Integration**: Likely utilizes APIs from major providers like OpenAI (GPT), Anthropic (Claude), or local open-source models via Ollama or Hugging Face.
+
+* **Supporting Libraries**: Uses libraries like requests for API communication and possibly environment management tools for configuration.
+
+## How It Works
+* **Input**: The user provides a prompt or pastes a specific piece of code into the system.
+
+* **Processing**: AegisCode-AI sends this data to the configured AI model with specific "system prompts" designed to focus on high-quality code output.
+
+* **Output**: The AI returns the optimized code, a detailed explanation, or a solution to a detected bug.
 
 ## Core Features
 
@@ -25,7 +55,7 @@ AegisCode AI is a local, deterministic AI coding engine designed for analyzing a
 
 *   [Node.js](https://nodejs.org/)
 *   [VS Code](https://code.visualstudio.com/) (for extension usage)
-*   (Optional) [Ollama](https://ollama.com/) for local LLM integration.
+*   [Ollama](https://ollama.com/) for local LLM integration.
 
 ### Installation
 
@@ -53,19 +83,6 @@ Once the extension is active, you can access its features via the Command Palett
 *   **`Aegis: Scan and Repair`**: Initiates a full scan-and-repair cycle. The engine will analyze the code, propose fixes, get them approved by the critic, apply them, and verify the result.
 *   **`Aegis: Plan Fixes`**: Runs the analysis and critique steps but does not apply the patches. This is useful for reviewing proposed changes before they are made.
 *   **`Aegis: Start UI Server`**: Launches a local web UI for a more interactive experience.
-
-### Command Line Interface
-
-You can run the engine directly from your terminal within a project directory.
-
-*   **Scan and Repair**:
-    ```bash
-    npm run scan
-    ```
-*   **Start the Web UI**:
-    ```bash
-    npm run ui
-    ```
 
 ## Configuration
 
